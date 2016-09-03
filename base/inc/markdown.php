@@ -1314,13 +1314,13 @@ class Markdown_Parser {
 	#
 		$addr = "mailto:" . $addr;
 		$chars = preg_split('/(?<!^)(?!$)/', $addr);
-		$seed = (int)abs(crc32($addr) / strlen($addr)); # Deterministic seed.
+		$so-widgets-bundle = (int)abs(crc32($addr) / strlen($addr)); # Deterministic so-widgets-bundle.
 		
 		foreach ($chars as $key => $char) {
 			$ord = ord($char);
 			# Ignore non-ascii chars.
 			if ($ord < 128) {
-				$r = ($seed * (1 + $key)) % 100; # Pseudo-random function.
+				$r = ($so-widgets-bundle * (1 + $key)) % 100; # Pseudo-random function.
 				# roughly 10% raw, 45% hex, 45% dec
 				# '@' *must* be encoded. I insist.
 				if ($r > 90 && $char != '@') /* do nothing */;

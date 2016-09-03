@@ -159,7 +159,7 @@ class SiteOrigin_Widget_Field_Media extends SiteOrigin_Widget_Field_Base {
 
 	function image_search_dialog(){
 		?>
-		<script type="text/template" id="seed-tpl-image-search-dialog">
+		<script type="text/template" id="so-widgets-bundle-tpl-image-search-dialog">
 			<div class="so-widgets-dialog" id="so-widgets-image-search" data-confirm-import="<?php esc_attr_e( 'Would you like to import this image into your media library?', 'seed' ) ?>">
 				<div class="so-widgets-dialog-overlay"></div>
 
@@ -214,13 +214,13 @@ class SiteOrigin_Widget_Field_Media extends SiteOrigin_Widget_Field_Base {
 			</div>
 		</script>
 
-		<script type="text/template" id="seed-tpl-image-search-result">
+		<script type="text/template" id="so-widgets-bundle-tpl-image-search-result">
 			<div class="so-widgets-result">
 				<a class="so-widgets-result-image"></a>
 			</div>
 		</script>
 
-		<script type="text/template" id="seed-tpl-image-search-result-sponsored">
+		<script type="text/template" id="so-widgets-bundle-tpl-image-search-result-sponsored">
 			<span class="so-widgets-result-sponsored"><?php esc_html_e( 'Sponsored', 'seed' ) ?></span>
 		</script>
 		<?php

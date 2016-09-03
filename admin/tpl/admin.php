@@ -33,7 +33,7 @@
 					}
 					$banner = apply_filters('siteorigin_widgets_widget_banner', $banner, $widget);
 					?>
-					<div class="so-widget-banner" data-seed="<?php echo esc_attr( substr( md5($widget['ID']), 0, 6 ) ) ?>">
+					<div class="so-widget-banner" data-so-widgets-bundle="<?php echo esc_attr( substr( md5($widget['ID']), 0, 6 ) ) ?>">
 						<?php if( !empty($banner) ) : ?>
 							<img src="<?php echo esc_url($banner) ?>" />
 						<?php endif; ?>

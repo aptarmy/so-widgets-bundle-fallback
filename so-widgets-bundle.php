@@ -10,7 +10,7 @@
  * - remove admin_menu_init action
  * - remove siteorigin_widgets_version_update action
  * - remove handle_update action
- * - replace 'so-widgets-bundle' with $theme_text_domain
+ * - replace 'seed' with $theme_text_domain
  * - replace 'SOW_BUNDLE_VERSION' with 'SOW_FALLBACK_BUNDLE_VERSION'
  * - replace 'SOW_BUNDLE_BASE_FILE' with 'SOW_FALLBACK_BUNDLE_BASE_FILE'
  * - replace 'SiteOrigin_Widgets_Bundle' with 'SiteOrigin_Fallback_Widgets_Bundle'
@@ -22,8 +22,8 @@
  * to include this fallback use this code	
 	function theme_so_plugin_fallbacak () {
 		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		if ( !is_plugin_active( 'seed-fallback/seed-fallback.php' ) ) {
-			require get_template_directory() . '/inc/seed-fallback/seed-fallback.php';
+		if ( !is_plugin_active( 'so-widgets-bundle-fallback/so-widgets-bundle-fallback.php' ) ) {
+			require get_template_directory() . '/inc/so-widgets-bundle-fallback/so-widgets-bundle-fallback.php';
 		}
 	}
 	add_action('after_setup_theme', 'theme_so_plugin_fallbacak', 1);
