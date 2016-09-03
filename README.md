@@ -13,10 +13,7 @@ We get this code from so-widget-bundle plugin and filter out all unecessary acti
 - change $widget_folders to empty array()
 - change $default_active_widgets to empty array()
 - remove 'widgets' folder
-- replace 'plugin_dir_url(__FILE__)' in 'so-widgets-bundle-fallback/icons/icons.php' to 'get_template_directory_uri() . "/inc/so-widgets-bundle-fallback/icons/"'
-- replace 'plugin_dir_url(SOW_FALLBACK_BUNDLE_BASE_FILE)' in 'so-widgets-bundle-fallback/icons/icons.php' to 'get_template_directory_uri() . "/inc/so-widgets-bundle-fallback/"'
-- replace 'plugin_dir_url(__FILE__)' in 'so-widgets-bundle-fallback/base/inc/fields/media.class.php' to 'get_template_directory_uri() . "/inc/so-widgets-bundle-fallback/base/inc/fields/"'
-- replace 'plugin_dir_url(__FILE__)' in 'so-widgets-bundle-fallback/base/inc/actions.php' to "get_template_directory_uri() . '/inc/so-widgets-bundle-fallback/base/inc/'"
+- replace 'plugin_dir_url' with 'theme_dir_url' recursively
 
 ## To include this fallback in your WordPress theme
 ```
