@@ -465,7 +465,11 @@ abstract class SiteOrigin_Widget extends WP_Widget {
 	 */
 	function footer_admin_templates(){
 		?>
+<<<<<<< HEAD
 		<script type="text/template" id="so-widgets-bundle-tpl-preview-dialog">
+=======
+		<script type="text/template" id="so-widgets-bundle-fallback-tpl-preview-dialog">
+>>>>>>> 63aca95e6d584dc1e331c21b008f7377ec4d235d
 			<div class="so-widgets-dialog">
 				<div class="so-widgets-dialog-overlay"></div>
 
