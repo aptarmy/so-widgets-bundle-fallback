@@ -212,7 +212,7 @@ class SiteOrigin_Widgets_Bundle_Fallback {
 		}
 		?>
 		<div class="updated">
-			<p><?php echo __( 'New widgets available in the ') . '<a href="' . admin_url('plugins.php?page=so-widgets-plugins') . '">' . __('SiteOrigin Widgets Bundle', 'seed' ) . '</a>!'; ?></p>
+			<p><?php echo __( 'New widgets available in the ', 'seed') . '<a href="' . admin_url('plugins.php?page=so-widgets-plugins') . '">' . __('SiteOrigin Widgets Bundle', 'seed' ) . '</a>!'; ?></p>
 			<?php
 
 			$default_headers = array(
