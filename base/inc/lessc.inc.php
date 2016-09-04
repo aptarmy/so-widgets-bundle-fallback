@@ -99,7 +99,7 @@ class lessc {
 		$str = $this->coerceString($importPath);
 		if ($str === null) return false;
 
-		$url = $this->compileValue($this->lib_e($str));
+		$url = $this->compileValue($this->lib_unquote_string($str));
 
 		// don't import if it ends in css
 		if (substr_compare($url, '.css', -4, 4) === 0) return false;
@@ -952,12 +952,12 @@ class lessc {
 	}
 
 	// utility func to unquote a string
-	protected function lib_e($arg) {
+	protected function lib_unquote_string($arg) {
 		switch ($arg[0]) {
 			case "list":
 				$items = $arg[2];
 				if (isset($items[0])) {
-					return $this->lib_e($items[0]);
+					return $this->lib_unquote_string($items[0]);
 				}
 				return self::$defaultValue;
 			case "string":
@@ -974,7 +974,7 @@ class lessc {
 		if ($args[0] != "list") return $args;
 		$values = $args[2];
 		$string = array_shift($values);
-		$template = $this->compileValue($this->lib_e($string));
+		$template = $this->compileValue($this->lib_unquote_string($string));
 
 		$i = 0;
 		if (preg_match_all('/%[dsa]/', $template, $m)) {
@@ -988,7 +988,7 @@ class lessc {
 				}
 
 				$i++;
-				$rep = $this->compileValue($this->lib_e($val));
+				$rep = $this->compileValue($this->lib_unquote_string($val));
 				$template = preg_replace('/'.self::preg_quote($match).'/',
 					$rep, $template, 1);
 			}
@@ -1017,7 +1017,7 @@ class lessc {
 		if ($arg[0] == "list") {
 			list($number, $newUnit) = $arg[2];
 			return array("number", $this->assertNumber($number),
-				$this->compileValue($this->lib_e($newUnit)));
+				$this->compileValue($this->lib_unquote_string($newUnit)));
 		} else {
 			return array("number", $this->assertNumber($arg), "");
 		}
@@ -1364,14 +1364,14 @@ class lessc {
 				$res = $this->coerceColor($res);
 			}
 
-			if (empty($value[2])) $res = $this->lib_e($res);
+			if (empty($value[2])) $res = $this->lib_unquote_string($res);
 
 			return $res;
 		case "variable":
 			$key = $value[1];
 			if (is_array($key)) {
 				$key = $this->reduce($key);
-				$key = $this->vPrefix . $this->compileValue($this->lib_e($key));
+				$key = $this->vPrefix . $this->compileValue($this->lib_unquote_string($key));
 			}
 
 			$seen =& $this->env->seenNames;
@@ -1396,13 +1396,13 @@ class lessc {
 				if (is_array($part)) {
 					$strip = $part[0] == "variable";
 					$part = $this->reduce($part);
-					if ($strip) $part = $this->lib_e($part);
+					if ($strip) $part = $this->lib_unquote_string($part);
 				}
 			}
 			return $value;
 		case "escape":
 			list(,$inner) = $value;
-			return $this->lib_e($this->reduce($inner));
+			return $this->lib_unquote_string($this->reduce($inner));
 		case "function":
 			$color = $this->funcToColor($value);
 			if ($color) return $color;
