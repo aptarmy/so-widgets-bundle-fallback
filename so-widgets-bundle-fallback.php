@@ -29,6 +29,14 @@
 	add_action('after_setup_theme', 'theme_so_plugin_fallbacak', 1);
  */
 
+
+// Setup wp_filesystem api
+
+require_once ABSPATH . 'wp-admin/includes/file.php';
+if( !WP_Filesystem() ) {
+	return;
+}
+
 define('SOW_FALLBACK_BUNDLE_VERSION', '1.6.5');
 define('SOW_FALLBACK_BUNDLE_BASE_FILE', __FILE__);
 

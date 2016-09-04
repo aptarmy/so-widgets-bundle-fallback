@@ -118,7 +118,7 @@ class lessc {
 
 		$this->addParsedFile($realPath);
 		$parser = $this->makeParser($realPath);
-		$root = $parser->parse(file_get_contents($realPath));
+		$root = $parser->parse($GLOBALS['wp_filesystem']->get_contents($realPath));
 
 		// set the parents of all the block props
 		foreach ($root->props as $prop) {
@@ -1827,12 +1827,12 @@ class lessc {
 
 		$this->addParsedFile($fname);
 
-		$out = $this->compile(file_get_contents($fname), $fname);
+		$out = $this->compile($GLOBALS['wp_filesystem']->get_contents($fname), $fname);
 
 		$this->importDir = $oldImport;
 
 		if ($outFname !== null) {
-			return file_put_contents($outFname, $out);
+			return $GLOBALS['wp_filesystem']->put_contents($outFname, $out);
 		}
 
 		return $out;

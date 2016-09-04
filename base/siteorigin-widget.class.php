@@ -660,7 +660,7 @@ abstract class SiteOrigin_Widget extends WP_Widget {
 			$less_file = siteorigin_widget_get_plugin_dir_path( $this->id_base ).'styles/'.$style_name . '.less';
 			$less_file = apply_filters( 'siteorigin_widgets_less_file_' . $this->id_base, $less_file, $instance, $this );
 
-			$less = ( substr( $less_file, -5 ) == '.less' && file_exists($less_file) ) ? file_get_contents( $less_file ) : '';
+			$less = ( substr( $less_file, -5 ) == '.less' && file_exists($less_file) ) ? $GLOBALS['wp_filesystem']->get_contents( $less_file ) : '';
 		}
 		else {
 			// The widget is going handle getting the instance LESS
@@ -738,11 +738,11 @@ abstract class SiteOrigin_Widget extends WP_Widget {
 		// First, we'll deal with a few special cases
 		switch( $filename ) {
 			case 'mixins':
-				return file_get_contents( plugin_dir_path( __FILE__ ) . 'less/mixins.less' );
+				return $GLOBALS['wp_filesystem']->get_contents( plugin_dir_path( __FILE__ ) . 'less/mixins.less' );
 				break;
 
 			case 'lesshat':
-				return file_get_contents( plugin_dir_path( __FILE__ ) . 'less/lesshat.less' );
+				return $GLOBALS['wp_filesystem']->get_contents( plugin_dir_path( __FILE__ ) . 'less/lesshat.less' );
 				break;
 		}
 
@@ -765,7 +765,7 @@ abstract class SiteOrigin_Widget extends WP_Widget {
 
 		foreach ( $search_path as $dir ) {
 			if ( file_exists( $dir . $filename ) ) {
-				return file_get_contents( $dir . $filename )."\n\n";
+				return $GLOBALS['wp_filesystem']->get_contents( $dir . $filename )."\n\n";
 			}
 		}
 

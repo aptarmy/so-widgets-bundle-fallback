@@ -8,11 +8,11 @@ function siteorigin_widget_post_selector_enqueue_admin_scripts() {
 
 		wp_localize_script( 'siteorigin-widget-admin-posts-selector', 'sowPostsSelectorTpl', array(
 			'ajaxurl' => wp_nonce_url( admin_url('admin-ajax.php'), 'widgets_action', '_widgets_nonce' ),
-			'modal' => file_get_contents( plugin_dir_path(SOW_FALLBACK_BUNDLE_BASE_FILE).'base/tpl/posts-selector/modal.html' ),
-			'postSummary' => file_get_contents( plugin_dir_path(SOW_FALLBACK_BUNDLE_BASE_FILE).'base/tpl/posts-selector/post.html' ),
+			'modal' => $GLOBALS['wp_filesystem']->get_contents( plugin_dir_path(SOW_FALLBACK_BUNDLE_BASE_FILE).'base/tpl/posts-selector/modal.html' ),
+			'postSummary' => $GLOBALS['wp_filesystem']->get_contents( plugin_dir_path(SOW_FALLBACK_BUNDLE_BASE_FILE).'base/tpl/posts-selector/post.html' ),
 			'foundPosts' => '<div class="sow-post-count-message">' . sprintf( __('This query returns <a href="#" class="preview-query-posts">%s posts</a>.', 'seed'), '<%= foundPosts %>') . '</div>',
 			'fields' => siteorigin_widget_post_selector_form_fields(),
-			'selector' => file_get_contents( plugin_dir_path(SOW_FALLBACK_BUNDLE_BASE_FILE).'base/tpl/posts-selector/selector.html' ),
+			'selector' => $GLOBALS['wp_filesystem']->get_contents( plugin_dir_path(SOW_FALLBACK_BUNDLE_BASE_FILE).'base/tpl/posts-selector/selector.html' ),
 		) );
 
 		wp_localize_script( 'siteorigin-widget-admin-posts-selector', 'sowPostsSelectorVars', array(
