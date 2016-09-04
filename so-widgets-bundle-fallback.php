@@ -20,13 +20,15 @@
  * - replace 'theme_dir_url' to 'theme_dir_url' rercursively
  * 
  * to include this fallback use this code	
-	function theme_so_plugin_fallbacak () {
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		if ( !is_plugin_active( 'so-widgets-bundle-fallback/so-widgets-bundle-fallback.php' ) ) {
+	function apt_siteorigin () {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php' ;
+		// check if plugin is activated
+		if ( !is_plugin_active( 'so-widgets-bundle/so-widgets-bundle.php' ) ) {
 			require get_template_directory() . '/inc/so-widgets-bundle-fallback/so-widgets-bundle-fallback.php';
 		}
+		require get_template_directory() . '/inc/so_widgets/so_widgets.php';
 	}
-	add_action('after_setup_theme', 'theme_so_plugin_fallbacak', 1);
+	add_action('after_setup_theme', 'apt_siteorigin', 1);
  */
 
 
@@ -470,7 +472,7 @@ class SiteOrigin_Widgets_Bundle_Fallback {
 		if( !$include ) return;
 
 		// Now, lets actually include the files
-		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 
 		foreach( $this->widget_folders as $folder ) {
 			if( !file_exists($folder . $widget_id . '/' . $widget_id . '.php') ) continue;
