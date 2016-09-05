@@ -31,9 +31,7 @@
 	add_action('after_setup_theme', 'apt_siteorigin', 1);
  */
 
-
 // Setup wp_filesystem api
-
 require_once ABSPATH . 'wp-admin/includes/file.php';
 if( !WP_Filesystem() ) {
 	return;
