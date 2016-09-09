@@ -30,6 +30,25 @@
 	}
 	add_action('after_setup_theme', 'apt_siteorigin', 1);
  */
+ 
+/**
+ * theme dir url
+ */
+if ( !function_exists("theme_dir_url") ) :
+	function theme_dir_url($file) {
+		$theme_dir_url = "";
+		if (is_string($file) && $file !== "") {
+			// $file /home/apt/public/wp/wp-content/theme/seed/inc/some-folder/some-file.php
+			$dirname = wp_normalize_path(trailingslashit(dirname($file))); // /home/apt/public/wp/wp-content/theme/seed/inc/some-folder/
+			$template_path = wp_normalize_path(get_template_directory()); // /home/apt/public/wp/wp-content/theme/seed
+			$template_uri = get_template_directory_uri(); // http://www.example.com/wp-content/theme/seed
+			$theme_dir_url = str_replace($template_path, '', $dirname); // /inc/some-folder/
+			$theme_dir_url = $template_uri . $theme_dir_url; // http://www.example.com/wp-content/theme/seed/inc/some-folder/
+			$theme_dir_url = set_url_scheme($theme_dir_url);
+		}
+		return $theme_dir_url;
+	}
+endif;
 
 // Setup wp_filesystem api
 require_once ABSPATH . 'wp-admin/includes/file.php';
