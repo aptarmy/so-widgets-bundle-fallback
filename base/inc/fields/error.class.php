@@ -17,7 +17,7 @@ class SiteOrigin_Widget_Field_Error extends SiteOrigin_Widget_Field_Base {
 	protected $message;
 
 	protected function render_field( $value, $instance ) {
-		printf( __($this->message, 'seed') );
+		printf( __('Error occured.', 'seed') );
 	}
 
 	protected function sanitize_field_input( $value, $instance ) {
