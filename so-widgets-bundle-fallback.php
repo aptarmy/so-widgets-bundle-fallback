@@ -18,8 +18,8 @@
  * - change $default_active_widgets to empty array()
  * - remove 'widgets' folder
  * - replace 'theme_dir_url' to 'theme_dir_url' rercursively
- * 
- * to include this fallback use this code	
+ *
+ * to include this fallback use this code
 	function apt_siteorigin () {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php' ;
 		// check if plugin is activated
@@ -30,7 +30,7 @@
 	}
 	add_action('after_setup_theme', 'apt_siteorigin', 1);
  */
- 
+
 /**
  * theme dir url
  */
@@ -88,9 +88,9 @@ class SiteOrigin_Widgets_Bundle_Fallback {
 	function __construct(){
 		// add_action('admin_init', array($this, 'admin_activate_widget') );
 		// add_action('admin_menu', array($this, 'admin_menu_init') );
-		add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts') );
-		add_action('wp_ajax_so_widgets_bundle_manage', array($this, 'admin_ajax_manage_handler') );
-		add_action('wp_ajax_sow_get_javascript_variables', array($this, 'admin_ajax_get_javascript_variables') );
+		//add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts') );
+		//add_action('wp_ajax_so_widgets_bundle_manage', array($this, 'admin_ajax_manage_handler') );
+		//add_action('wp_ajax_sow_get_javascript_variables', array($this, 'admin_ajax_get_javascript_variables') );
 
 		// Initialize the widgets, but do it fairly late
 		// add_action( 'plugins_loaded', array($this, 'set_plugin_textdomain'), 1 );
@@ -98,11 +98,11 @@ class SiteOrigin_Widgets_Bundle_Fallback {
 		add_action( 'after_setup_theme', array($this, 'load_widget_plugins'), 11 );
 
 		// Add the plugin_action_links links.
-		add_action( 'plugin_action_links_' . plugin_basename(__FILE__), array($this, 'plugin_action_links') );
+		//add_action( 'plugin_action_links_' . plugin_basename(__FILE__), array($this, 'plugin_action_links') );
 
 		// add_action( 'admin_init', array($this, 'plugin_version_check') );
 		// add_action( 'siteorigin_widgets_version_update', array( $this, 'handle_update' ), 10, 2 );
-		add_action( 'admin_notices', array( $this, 'display_admin_notices') );
+		//add_action( 'admin_notices', array( $this, 'display_admin_notices') );
 
 		// Actions for clearing widget cache
 		add_action( 'switch_theme', array($this, 'clear_widget_cache') );
@@ -114,7 +114,7 @@ class SiteOrigin_Widgets_Bundle_Fallback {
 		add_filter( 'siteorigin_panels_prebuilt_layout', array($this, 'load_missing_widgets') );
 		add_filter( 'siteorigin_panels_widget_object', array($this, 'load_missing_widget'), 10, 2 );
 
-		add_filter( 'wp_enqueue_scripts', array($this, 'register_general_scripts') );
+		//add_filter( 'wp_enqueue_scripts', array($this, 'register_general_scripts') );
 		add_filter( 'wp_enqueue_scripts', array($this, 'enqueue_active_widgets_scripts') );
 	}
 

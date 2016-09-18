@@ -442,13 +442,13 @@ abstract class SiteOrigin_Widget extends WP_Widget {
 				'sure' => __('Are you sure?', 'seed')
 			) );
 
-			/*global $wp_customize;
+			global $wp_customize;
 			if ( isset( $wp_customize ) ) {
 				$this->footer_admin_templates();
 			}
 			else {
 				add_action( 'admin_footer', array( $this, 'footer_admin_templates' ) );
-			}*/
+			}
 		}
 
 		if( $this->using_posts_selector() ) {
@@ -458,6 +458,38 @@ abstract class SiteOrigin_Widget extends WP_Widget {
 		// This lets the widget enqueue any specific admin scripts
 		$this->enqueue_admin_scripts();
 		do_action( 'siteorigin_widgets_enqueue_admin_scripts_' . $this->id_base, $this );
+	}
+
+	/**
+	 * Display all the admin stuff for the footer
+	 */
+	function footer_admin_templates(){
+		?>
+		<script type="text/template" id="so-widgets-bundle-tpl-preview-dialog">
+			<div class="so-widgets-dialog">
+				<div class="so-widgets-dialog-overlay"></div>
+
+				<div class="so-widgets-toolbar">
+					<h3><?php _e('Widget Preview', 'so-widgets-bundle') ?></h3>
+					<div class="close"><span class="dashicons dashicons-arrow-left-alt2"></span></div>
+				</div>
+
+				<div class="so-widgets-dialog-frame">
+					<iframe name="siteorigin-widgets-preview-iframe" id="siteorigin-widget-preview-iframe" style="visibility: hidden"></iframe>
+				</div>
+
+				<form target="siteorigin-widgets-preview-iframe" action="<?php echo wp_nonce_url( admin_url('admin-ajax.php'), 'widgets_action', '_widgets_nonce' ) ?>" method="post">
+					<input type="hidden" name="action" value="so_widgets_preview" />
+					<input type="hidden" name="data" value="" />
+					<input type="hidden" name="class" value="" />
+				</form>
+
+			</div>
+		</script>
+		<?php
+
+		// Give other plugins a chance to add their own
+		do_action('siteorigin_widgets_footer_admin_templates');
 	}
 
 	/**
