@@ -12,7 +12,7 @@ We get this code from so-widget-bundle plugin and filter out all unecessary acti
 - replace 'SiteOrigin_Widgets_Bundle' with 'SiteOrigin_Fallback_Widgets_Bundle'
 - change $widget_folders to empty array()
 - change $default_active_widgets to empty array()
-- remove unnecessary folders, we need only 'beas' and 'icon' folder
+- remove unnecessary folders, we need only 'base' and 'icon' folder
 - replace 'plugin_dir_url' with 'theme_dir_url' recursively
 
 ## To include this fallback in your WordPress theme
