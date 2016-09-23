@@ -16,7 +16,7 @@
  * - replace 'SiteOrigin_Widgets_Bundle' with 'SiteOrigin_Fallback_Widgets_Bundle'
  * - change $widget_folders to empty array()
  * - change $default_active_widgets to empty array()
- * - remove 'widgets' folder
+ * - remove unnecessary folders, we need only 'beas' and 'icon' folder
  * - replace 'theme_dir_url' to 'theme_dir_url' rercursively
  *
  * to include this fallback use this code
