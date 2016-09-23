@@ -12,16 +12,16 @@ We get this code from so-widget-bundle plugin and filter out all unecessary acti
 - replace 'SiteOrigin_Widgets_Bundle' with 'SiteOrigin_Fallback_Widgets_Bundle'
 - change $widget_folders to empty array()
 - change $default_active_widgets to empty array()
-- remove 'widgets' folder
+- remove unnecessary folders, we need only 'beas' and 'icon' folder
 - replace 'plugin_dir_url' with 'theme_dir_url' recursively
 
 ## To include this fallback in your WordPress theme
 ```
-function theme_so_plugin_fallbacak () {
-	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-	if ( !is_plugin_active( 'so-widgets-bundle/so-widgets-bundle.php' ) ) {
-		require get_template_directory() . '/inc/so-widgets-bundle-fallback/so-widgets-bundle-fallback.php';
+function apt_so_widget_framework_fallback () {
+	if ( !class_exists('SiteOrigin_Widgets_Bundle') ) {
+		require get_template_directory() . '/inc/widget_framework/widget_framework.php';
 	}
+	require get_template_directory() . '/inc/apt_widgets/apt_widgets.php';
 }
-add_action('after_setup_theme', 'theme_so_plugin_fallbacak', 1);
+add_action('after_setup_theme', 'apt_so_widget_framework_fallback', 1);
 ```

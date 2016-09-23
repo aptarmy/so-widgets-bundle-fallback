@@ -20,15 +20,13 @@
  * - replace 'theme_dir_url' to 'theme_dir_url' rercursively
  *
  * to include this fallback use this code
-	function apt_siteorigin () {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php' ;
-		// check if plugin is activated
-		if ( !is_plugin_active( 'so-widgets-bundle/so-widgets-bundle.php' ) ) {
-			require get_template_directory() . '/inc/so-widgets-bundle-fallback/so-widgets-bundle-fallback.php';
+	function apt_so_widget_framework_fallback () {
+		if ( !class_exists('SiteOrigin_Widgets_Bundle') ) {
+			require get_template_directory() . '/inc/widget_framework/widget_framework.php';
 		}
-		require get_template_directory() . '/inc/so_widgets/so_widgets.php';
+		require get_template_directory() . '/inc/apt_widgets/apt_widgets.php';
 	}
-	add_action('after_setup_theme', 'apt_siteorigin', 1);
+	add_action('after_setup_theme', 'apt_so_widget_framework_fallback', 1);
  */
 
 /**
