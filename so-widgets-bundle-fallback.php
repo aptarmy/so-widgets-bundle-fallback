@@ -487,7 +487,7 @@ class SiteOrigin_Widgets_Bundle_Fallback {
 		if( !$include ) return;
 
 		// Now, lets actually include the files
-		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 		foreach( $this->widget_folders as $folder ) {
 			if( !file_exists($folder . $widget_id . '/' . $widget_id . '.php') ) continue;
