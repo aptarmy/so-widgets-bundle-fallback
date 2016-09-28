@@ -463,6 +463,7 @@ abstract class SiteOrigin_Widget extends WP_Widget {
 	/**
 	 * Display all the admin stuff for the footer
 	 */
+	/*
 	function footer_admin_templates(){
 		?>
 		<script type="text/template" id="so-widgets-bundle-tpl-preview-dialog">
@@ -491,7 +492,8 @@ abstract class SiteOrigin_Widget extends WP_Widget {
 		// Give other plugins a chance to add their own
 		do_action('siteorigin_widgets_footer_admin_templates');
 	}
-
+	*/
+	
 	/**
 	 * Checks if the current widget is using a posts selector
 	 *
